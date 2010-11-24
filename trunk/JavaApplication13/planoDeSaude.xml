@@ -1,0 +1,18 @@
+<list>
+  <PlanoDeSaude.PlanoDeSaude>
+    <STRING__VAZIA></STRING__VAZIA>
+    <nomeDoPlano>Particular</nomeDoPlano>
+  </PlanoDeSaude.PlanoDeSaude>
+  <PlanoDeSaude.PlanoDeSaude>
+    <STRING__VAZIA></STRING__VAZIA>
+    <precoDoPlano>2.0</precoDoPlano>
+    <nomeDoPlano>novo plano</nomeDoPlano>
+    <telefoneDoPlano>(22)1234-1234</telefoneDoPlano>
+  </PlanoDeSaude.PlanoDeSaude>
+  <PlanoDeSaude.PlanoDeSaude>
+    <STRING__VAZIA></STRING__VAZIA>
+    <precoDoPlano>100.0</precoDoPlano>
+    <nomeDoPlano>nomeDeUmPlano</nomeDoPlano>
+    <telefoneDoPlano>(12)1234-1111</telefoneDoPlano>
+  </PlanoDeSaude.PlanoDeSaude>
+</list>

@@ -1,0 +1,42 @@
+<list>
+  <Paciente.Paciente>
+    <MES__DE__FEVEREIRO>2</MES__DE__FEVEREIRO>
+    <nome>rodolfo</nome>
+    <cpf>123.123.100-22</cpf>
+    <endereco>
+      <rua>dasda</rua>
+      <complemento>sdsada</complemento>
+      <bairro>asdadsa</bairro>
+      <cidade>asdadsadasdas</cidade>
+      <estado>dasdsadsadsa</estado>
+      <cep>01232-231</cep>
+      <numero>323</numero>
+    </endereco>
+    <foneResidencial>
+      <telefone>(12)1233-1231</telefone>
+    </foneResidencial>
+    <foneComercial>
+      <telefone>(11)1111-1111</telefone>
+    </foneComercial>
+    <foneCelular>
+      <telefone>(22)2222-2222</telefone>
+    </foneCelular>
+    <dataDeNascimento>02/09/2010</dataDeNascimento>
+    <idade>0</idade>
+    <email>xds@gmail.com</email>
+    <formaDeContato>Telefone comercial</formaDeContato>
+    <dataDaUltimaVisita>02/09/2010</dataDaUltimaVisita>
+    <horarioDeAtendimento>
+      <AJUSTE__CALENDARIO>1</AJUSTE__CALENDARIO>
+      <numeroDeIdentificao>418</numeroDeIdentificao>
+      <retorno>false</retorno>
+      <primeiraConsulta>false</primeiraConsulta>
+      <planoDeSaude>
+        <STRING__VAZIA></STRING__VAZIA>
+        <precoDoPlano>2.0</precoDoPlano>
+        <nomeDoPlano>novo plano</nomeDoPlano>
+        <telefoneDoPlano>(22)1234-1234</telefoneDoPlano>
+      </planoDeSaude>
+    </horarioDeAtendimento>
+  </Paciente.Paciente>
+</list>
