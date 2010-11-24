@@ -438,8 +438,7 @@ public class PainelCadastraMedicos extends javax.swing.JPanel {
                     medico.addDiasDeExpediente(new DiaDeTrabalho(semana(diasExpediente[i-3]), diasExpediente[(i-2)], diasExpediente[(i-1)]));
                 }
             }
-                List<Medico> listaDeMedico = new ArrayList<Medico>();
-                listaDeMedico = GravaLerMedico.lerMedico(listaDeMedico);
+                List<Medico> listaDeMedico = Main.secretaria.getListaDeMedico();
                 listaDeMedico.add(medico);
                 GravaLerMedico.gravaMedico(listaDeMedico);
                 erro.setText("Medico Adicionado com sucesso\n Click em voltar");
@@ -471,6 +470,7 @@ public class PainelCadastraMedicos extends javax.swing.JPanel {
         horaDeSaida2.setText("");
         diasDeCirurgia.setText("");
         diasDeExpediente.setText("");
+        erro.setText("");
 
     }
 

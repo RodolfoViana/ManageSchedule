@@ -561,7 +561,7 @@
                 <Property name="rows" type="int" value="5"/>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="String xx = MainPlanoDeSaude.listaDePlanosCadastrados().toString();&#xa;xx = xx.replace(&quot;[&quot;, &quot;&quot;);&#xa;xx = xx.replace(&quot;]&quot;, &quot;&quot;);&#xa;xx = xx.replace(&quot;null&quot;, &quot;   &quot;);&#xa;xx = xx.replace(&quot;,&quot;, &quot;\n&quot;);&#xa;&#xa;&#xa;&#xa;jTextArea2.setText(xx);"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="String xx = Main.secretaria.getListaDePlanoDeSaude().toString();&#xa;xx = xx.replace(&quot;[&quot;, &quot;&quot;);&#xa;xx = xx.replace(&quot;]&quot;, &quot;&quot;);&#xa;xx = xx.replace(&quot;null&quot;, &quot;   &quot;);&#xa;xx = xx.replace(&quot;,&quot;, &quot;\n&quot;);&#xa;&#xa;&#xa;&#xa;jTextArea2.setText(xx);"/>
               </AuxValues>
             </Component>
           </SubComponents>

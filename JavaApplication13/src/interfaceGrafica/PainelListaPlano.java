@@ -67,7 +67,7 @@ public class PainelListaPlano extends javax.swing.JPanel {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        String s = MainPlanoDeSaude.listaDePlanosCadastrados().toString();
+        String s = Main.secretaria.getListaDePlanoDeSaude().toString();
         s = s.replace("[", "");
         s = s.replace("]", "");
         s = s.replace("null", "   ");

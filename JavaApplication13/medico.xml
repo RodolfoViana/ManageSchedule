@@ -147,4 +147,22 @@
     <nomeDoMedico>maisumteste</nomeDoMedico>
     <especialidade>PUNHO</especialidade>
   </Medico.Medico>
+  <Medico.Medico>
+    <agenda>
+      <diasDeExpediente/>
+      <diasDeCirurgia>
+        <Medico.DiaDeTrabalho>
+          <entrou>10:00</entrou>
+          <saiu>12:00</saiu>
+          <diaSemana>QUARTA</diaSemana>
+        </Medico.DiaDeTrabalho>
+      </diasDeCirurgia>
+      <listaPacientes/>
+      <listaPacientesCirurgia/>
+      <tempoPrimeiraConsulta>10</tempoPrimeiraConsulta>
+      <tempoConsultaRetorno>12</tempoConsultaRetorno>
+    </agenda>
+    <nomeDoMedico>testando</nomeDoMedico>
+    <especialidade>OMBRO</especialidade>
+  </Medico.Medico>
 </list>

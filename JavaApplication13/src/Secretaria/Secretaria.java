@@ -9,6 +9,7 @@ import Medico.Especialidade;
 import Medico.Medico;
 import Paciente.HorarioDeAtendimento;
 import Paciente.Paciente;
+import PlanoDeSaude.PlanoDeSaude;
 
 /**
  * Classe Secretaria usada para ter acesso a listas De Pacientes e de medicos te todo hospital,
@@ -20,6 +21,7 @@ public class Secretaria {
 	private List<Medico> listaDeMedico;
 	private List<Paciente> listaDePaciente;
 	private List<HorarioDeAtendimento> listaDeEspera;
+        private List<PlanoDeSaude> listaDePlanoDeSaude;
 
 	/**
 	 * Constroi uma secretaria, apartir da lista de medico e da lista de paciente
@@ -32,6 +34,23 @@ public class Secretaria {
 		this.listaDeEspera = new ArrayList<HorarioDeAtendimento>();
 	}
 
+        
+	public Secretaria(List<Medico> listaDeMedico, List<Paciente> listaDePaciente, List<PlanoDeSaude> listaDePlanoDeSaude) {
+		this.listaDeMedico = listaDeMedico;
+		this.listaDePaciente = listaDePaciente;
+                this.listaDePlanoDeSaude = listaDePlanoDeSaude;
+		this.listaDeEspera = new ArrayList<HorarioDeAtendimento>();
+	}
+        
+        public List<PlanoDeSaude> getListaDePlanoDeSaude(){
+            return listaDePlanoDeSaude;
+        }
+
+        public void setListaDePlanoDeSaude(List<PlanoDeSaude> novoPlano){
+            listaDePlanoDeSaude = novoPlano;
+        }
+        
+        
 	/**
 	 * Recupera a lista de paciente
 	 * @return Lista de paciente

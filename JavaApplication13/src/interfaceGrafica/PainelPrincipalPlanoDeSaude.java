@@ -185,6 +185,7 @@ public class PainelPrincipalPlanoDeSaude extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       Main.listaDePlanos = new PainelListaPlano();
        Main.frame1.setContentPane(Main.listaDePlanos);
        Main.frame1.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
