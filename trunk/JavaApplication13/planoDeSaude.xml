@@ -15,4 +15,22 @@
     <nomeDoPlano>nomeDeUmPlano</nomeDoPlano>
     <telefoneDoPlano>(12)1234-1111</telefoneDoPlano>
   </PlanoDeSaude.PlanoDeSaude>
+  <PlanoDeSaude.PlanoDeSaude>
+    <STRING__VAZIA></STRING__VAZIA>
+    <precoDoPlano>10.0</precoDoPlano>
+    <nomeDoPlano>dasdasdsad</nomeDoPlano>
+    <telefoneDoPlano>(12)3132-1323</telefoneDoPlano>
+  </PlanoDeSaude.PlanoDeSaude>
+  <PlanoDeSaude.PlanoDeSaude>
+    <STRING__VAZIA></STRING__VAZIA>
+    <precoDoPlano>10.0</precoDoPlano>
+    <nomeDoPlano>mais um teste</nomeDoPlano>
+    <telefoneDoPlano>(12)3132-1323</telefoneDoPlano>
+  </PlanoDeSaude.PlanoDeSaude>
+  <PlanoDeSaude.PlanoDeSaude>
+    <STRING__VAZIA></STRING__VAZIA>
+    <precoDoPlano>10.0</precoDoPlano>
+    <nomeDoPlano>mais um</nomeDoPlano>
+    <telefoneDoPlano>(12)3131-2321</telefoneDoPlano>
+  </PlanoDeSaude.PlanoDeSaude>
 </list>

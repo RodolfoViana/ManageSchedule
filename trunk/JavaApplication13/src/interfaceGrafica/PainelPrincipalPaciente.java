@@ -181,11 +181,13 @@ public class PainelPrincipalPaciente extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Main.painelCadastraPaciente = new PainelCadastraPaciente();
         Main.frame1.setContentPane(Main.painelCadastraPaciente);
         Main.frame1.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       Main.painelExcluiPaciente = new PainelExcluiPaciente();
        Main.frame1.setContentPane(Main.painelExcluiPaciente);
        Main.frame1.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -196,6 +198,7 @@ public class PainelPrincipalPaciente extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Main.painelListadePacientes = new PainelListaDePacientes();
         Main.frame1.setContentPane(Main.painelListadePacientes);
         Main.frame1.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed

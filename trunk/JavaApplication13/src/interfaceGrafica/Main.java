@@ -7,6 +7,7 @@ package interfaceGrafica;
 
 import Medico.Medico;
 import Paciente.Paciente;
+import PlanoDeSaude.PlanoDeSaude;
 import Secretaria.Secretaria;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import persistencia.GravaLerMedico;
 import persistencia.GravaLerPaciente;
+import persistencia.GravaLerPlanoDeSaude;
 
 /**
  *
@@ -25,6 +27,7 @@ public class Main {
     public static Secretaria secretaria;
     public static List<Medico> listaDeMedico;
     public static List<Paciente> listaDePaciente;
+    public static List<PlanoDeSaude> listaDePlanoDeSaude;
 
     public static void main(String[] args){
         try{
@@ -35,10 +38,16 @@ public class Main {
 	try{
 		listaDeMedico = GravaLerMedico.lerMedico(listaDeMedico);
             } catch (Exception e){
-		listaDePaciente = new ArrayList<Paciente>();
+		listaDeMedico = new ArrayList<Medico>();
 	}
-        System.out.println(listaDePaciente.toString());
-	secretaria = new Secretaria(listaDeMedico, listaDePaciente);
+
+        try{
+		listaDePlanoDeSaude = GravaLerPlanoDeSaude.lerPlanoDeSaude(listaDePlanoDeSaude);
+            } catch (Exception e){
+		listaDePlanoDeSaude = new ArrayList<PlanoDeSaude>();
+	}
+        System.out.println(listaDePlanoDeSaude.toString());
+	secretaria = new Secretaria(listaDeMedico, listaDePaciente, listaDePlanoDeSaude);
 
        frame1 = new FramePrincipal();
        listaDePlanos = new PainelListaPlano();

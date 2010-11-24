@@ -354,7 +354,7 @@ public class PainelCadastraPaciente extends javax.swing.JPanel {
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
-        String xx = MainPlanoDeSaude.listaDePlanosCadastrados().toString();
+        String xx = Main.secretaria.getListaDePlanoDeSaude().toString();
         xx = xx.replace("[", "");
         xx = xx.replace("]", "");
         xx = xx.replace("null", "   ");
@@ -483,6 +483,7 @@ public class PainelCadastraPaciente extends javax.swing.JPanel {
        telefoneComercial.setText("");
        telefoneresidencia.setText("");
        nomeDoPlano.setText("");
+       erro.setText("");
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -522,17 +523,14 @@ public class PainelCadastraPaciente extends javax.swing.JPanel {
             TelefoneDeContato teleComercial1 = new TelefoneDeContato(telefoneComercial.getText());
             TelefoneDeContato teleCelular1 = new TelefoneDeContato(telefoneCelular.getText());
             Paciente paciente = new Paciente(nomeDoPaciente.getText(), cpfPaciente.getText(), endereco1, telefoneResidencia1, teleComercial1, teleCelular1, nascimento.getText(), pedePlanoDeSaude(nomeDoPlano.getText()), email.getText().toString(), formaContato.getSelectedItem().toString());
-//            List<Paciente> listaPaciente = new ArrayList<Paciente>();
-//            listaPaciente = GravaLerPaciente.lerPaciente(listaPaciente);
-//            listaPaciente.add(paciente);
-//            GravaLerPaciente.gravaPaciente(listaPaciente);
-            erro.setText(paciente.toString());
-            
-
+            List<Paciente> listaDePaciente = Main.secretaria.getListaDePaciente();
+            listaDePaciente.add(paciente);
+            GravaLerPaciente.gravaPaciente(listaDePaciente);
+        
+            erro.setText("Paciente Adicionado com sucesso\n Click em voltar");
         } catch (Exception e){
             erro.setFont(new java.awt.Font("Tahoma", 1, 18));
-            erro.setText(e.getMessage());
-            System.out.println(e.getMessage());
+            erro.setText("Dados Incorretos!");        
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

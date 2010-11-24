@@ -158,6 +158,7 @@ public class PainelPrincipalMedico extends javax.swing.JPanel {
     }//GEN-LAST:event_bCadastraMedicoActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Main.painelAgendaDosMedicos = new PainelAgendaDosMedicos();
         Main.frame1.setContentPane(Main.painelAgendaDosMedicos);
         Main.frame1.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed

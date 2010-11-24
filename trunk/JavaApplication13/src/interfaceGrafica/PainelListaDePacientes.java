@@ -11,15 +11,19 @@
 
 package interfaceGrafica;
 
+import Paciente.Paciente;
 import interfaceUsuario.MainPaciente;
 import interfaceUsuario.MainSecretaria;
+import java.util.ArrayList;
+import java.util.List;
+import persistencia.GravaLerPaciente;
 
 /**
  *
  * @author Administrador
  */
 public class PainelListaDePacientes extends javax.swing.JPanel {
-
+    private ArrayList<Paciente> listaDePaciente;
     /** Creates new form PainelListaDePacientes */
     public PainelListaDePacientes() {
         initComponents();
@@ -67,7 +71,6 @@ public class PainelListaDePacientes extends javax.swing.JPanel {
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         String sx = Main.secretaria.getListaDePaciente().toString();
-
         sx = sx.replace("[", "");
         sx = sx.replace("]", "");
         sx = sx.replace(",", "\n");
