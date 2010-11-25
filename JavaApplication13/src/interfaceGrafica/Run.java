@@ -21,7 +21,7 @@ import persistencia.GravaLerPlanoDeSaude;
  *
  * @author rodolfolv
  */
-public class Main {
+public class Run {
     public static JFrame frame1;
     public static JPanel painelPrincipal, painelCadastraMedico, painelMarcaCirurgia, painelListaDeEspera, painelCancelaUmaConsulta, painelCadastraPlanodeSaude, painelPrincinpalMedico, painelPrincipalPaciente, painelPrincinpalPlanoDeSaude, painelCadastraPaciente, painelAdicionaHorarioDeMedico, painelAgendaDosMedicos, painelExcluiPaciente, painelAlteraPreco, listaDePlanos, marcarConsulta, painelPrincipalMarca, painelMarcaConsultaEspecialidade, cancelaConsulta, painelDesMarcaConsulta, painelListadePacientes;
     public static Secretaria secretaria;
@@ -75,11 +75,6 @@ public class Main {
 
        frame1.setVisible(true);
        frame1.setContentPane(painelPrincipal);
-       
+
     }
-
-
-
-
-
 }

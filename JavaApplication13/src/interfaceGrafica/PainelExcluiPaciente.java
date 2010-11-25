@@ -11,7 +11,10 @@
 
 package interfaceGrafica;
 
+import Paciente.Paciente;
 import interfaceUsuario.MainPaciente;
+import java.util.List;
+import persistencia.GravaLerPaciente;
 
 /**
  *
@@ -117,8 +120,18 @@ public class PainelExcluiPaciente extends javax.swing.JPanel {
         });
 
         jButton2.setText("Limpar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("OK");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -129,9 +142,9 @@ public class PainelExcluiPaciente extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(202, 202, 202)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
+                        .addGap(80, 80, 80)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 267, Short.MAX_VALUE)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -163,6 +176,39 @@ public class PainelExcluiPaciente extends javax.swing.JPanel {
         Main.frame1.setContentPane(Main.painelPrincipalPaciente);
         Main.frame1.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private Paciente pedePaciente(String paciente) {
+       List<Paciente> listaDePaciente = Main.secretaria.getListaDePaciente();
+       
+       Paciente novoPaciente = null;
+	for (Paciente pacientes : listaDePaciente) {
+	    if ( pacientes.getNome().equalsIgnoreCase(paciente)){
+                novoPaciente =  pacientes;
+                return novoPaciente;
+            }
+        }
+        return novoPaciente;
+	}
+
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       
+        
+        List<Paciente> listaDePaciente = Main.secretaria.getListaDePaciente();
+        listaDePaciente.remove(pedePaciente(excluirPaciente.getText()));
+        try {
+            GravaLerPaciente.gravaPaciente(listaDePaciente);
+        } catch (Exception e){
+        }
+        Main.painelExcluiPaciente = new PainelExcluiPaciente();
+        Main.frame1.setContentPane(Main.painelExcluiPaciente);
+        Main.frame1.setVisible(true);
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       excluirPaciente.setText("");
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

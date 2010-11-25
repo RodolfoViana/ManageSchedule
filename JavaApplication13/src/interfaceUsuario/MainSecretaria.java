@@ -534,5 +534,16 @@ public class MainSecretaria {
 		}
 				
 	}
+	
+	
+	public static String confirmacaoConsulta(Medico medico, Paciente paciente){
+		HorarioDeAtendimento horario = medico.getListaDePacientes().get(medico.getListaDePacientes().size()-1);
+		return "\nO paciente pode ser marcado nessa data: " + horario.getDiaDoMes() + "/" + (horario.getMes()+1) + "/"  + horario.getAno() + "\n";
+	}
+	
+	
+	
+		
+		
 
 }

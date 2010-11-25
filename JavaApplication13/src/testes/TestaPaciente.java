@@ -16,7 +16,9 @@ public class TestaPaciente {
 	Paciente paciente;
 	PlanoDeSaude plano = new PlanoDeSaude();
 	EnderecoDoPaciente endereco;
-	TelefoneDeContato telefone1, telefone2 , telefone3;
+	TelefoneDeContato foneResidencial;
+	TelefoneDeContato foneComercial;
+	TelefoneDeContato foneCelular;
 	
 	@Before
 	public void testaEndereco() throws Exception {
@@ -24,10 +26,18 @@ public class TestaPaciente {
 	}
 	
 	@Before
-	public void testaTelefone() throws Exception {
-		telefone1 = new TelefoneDeContato("(83)3333-0000");
-		telefone2 = new TelefoneDeContato("(83)8888-0000");
-		telefone3 = new TelefoneDeContato("(83)3210-0000");
+	public void testaTelefoneResidencial() throws Exception {
+		foneResidencial = new TelefoneDeContato("(83)3333-0000");
+	}
+	
+	@Before
+	public void testaTelefoneComercial() throws Exception {
+		foneComercial = new TelefoneDeContato("(83)1414-1414");
+	}
+	
+	@Before
+	public void testaTelefoneCelular() throws Exception {
+		foneCelular = new TelefoneDeContato("(11)3636-3636");
 	}
 	
 	@Test
@@ -35,8 +45,8 @@ public class TestaPaciente {
 								
 		try {
 			paciente = new Paciente("", "450.254.268-03", endereco,
-					telefone1,
-					telefone2, telefone3, "05/04/1985", plano, "paciente@gmail.com",
+					foneResidencial, foneComercial, foneCelular,
+					"05/04/1985", plano, "paciente@gmail.com",
 					"Telefone celular", "10/10/2010");
 			Assert.fail("Esperava excessao de nome incorreto");
 		} catch (Exception e) {
@@ -50,7 +60,7 @@ public class TestaPaciente {
 		
 		try {
 			paciente = new Paciente("Maria da Silva", "", endereco,
-					telefone1,telefone2,telefone3,
+					foneResidencial, foneComercial, foneCelular,
 					"05/04/1985", plano, "paciente@gmail.com",
 					"Telefone celular", "10/10/2010");
 			Assert.fail("Esperava excessao de cpf invalido");
@@ -60,7 +70,7 @@ public class TestaPaciente {
 		
 		try {
 			paciente = new Paciente("Maria da Silva", "45.254.268-07", endereco,
-					telefone1,telefone2,telefone3,
+					foneResidencial, foneComercial, foneCelular,
 					"05/04/1985", plano, "paciente@gmail.com",
 					"Telefone celular", "10/10/2010");
 			Assert.fail("Esperava excessao de cpf invalido");
@@ -70,7 +80,7 @@ public class TestaPaciente {
 		
 		try {
 			paciente = new Paciente("Maria da Silva", "450.25.268-07", endereco,
-					telefone1,telefone2,telefone3,
+					foneResidencial, foneComercial, foneCelular,
 					"05/04/1985", plano, "paciente@gmail.com",
 					"Telefone celular", "10/10/2010");
 			Assert.fail("Esperava excessao de cpf invalido");
@@ -80,7 +90,7 @@ public class TestaPaciente {
 		
 		try {
 			paciente = new Paciente("Maria da Silva", "450.254.26-07", endereco,
-					telefone1,telefone2,telefone3,
+					foneResidencial, foneComercial, foneCelular,
 					"05/04/1985", plano, "paciente@gmail.com",
 					"Telefone celular", "10/10/2010");
 			Assert.fail("Esperava excessao de cpf invalido");
@@ -90,7 +100,7 @@ public class TestaPaciente {
 		
 		try {
 			paciente = new Paciente("Maria da Silva", "450.254.268-0", endereco,
-					telefone1,telefone2,telefone3,
+					foneResidencial, foneComercial, foneCelular,
 					"05/04/1985", plano, "paciente@gmail.com",
 					"Telefone celular", "10/10/2010");
 			Assert.fail("Esperava excessao de cpf invalido");
@@ -106,42 +116,52 @@ public class TestaPaciente {
 		
 		try {
 			paciente = new Paciente("Maria da Silva", "450.254.268-03", endereco,
-					telefone1,telefone2,telefone3,
+					foneResidencial, foneComercial, foneCelular,
 					"05/041985", plano, "paciente@gmail.com",
 					"Telefone celular", "10/10/2010");
 			Assert.fail("Esperava excessao de data invalida");
 		} catch (Exception e) {
-			Assert.assertEquals("Data invalida.", e.getMessage());
+			Assert.assertEquals("Data de nascimento invalida.", e.getMessage());
 		}
 		
 		try {
 			paciente = new Paciente("Maria da Silva", "450.254.268-03", endereco,
-					telefone1,telefone2,telefone3,
+					foneResidencial, foneComercial, foneCelular,
 					"5/4/198", plano, "paciente@gmail.com",
 					"Telefone celular", "10/10/2010");
 			Assert.fail("Esperava excessao de data invalida");
 		} catch (Exception e) {
-			Assert.assertEquals("Data invalida.", e.getMessage());
+			Assert.assertEquals("Data de nascimento invalida.", e.getMessage());
 		}
 		
 		try {
 			paciente = new Paciente("Maria da Silva", "450.254.268-03", endereco,
-					telefone1,telefone2,telefone3,
+					foneResidencial, foneComercial, foneCelular,
 					"32/10/1985", plano, "paciente@gmail.com",
 					"Telefone celular", "10/10/2010");
 			Assert.fail("Esperava excessao de data invalida");
 		} catch (Exception e) {
-			Assert.assertEquals("Data invalida.", e.getMessage());
+			Assert.assertEquals("Data de nascimento invalida.", e.getMessage());
 		}
 		
 		try {
 			paciente = new Paciente("Maria da Silva", "450.254.268-03", endereco,
-					telefone1,telefone2,telefone3,
+					foneResidencial, foneComercial, foneCelular,
 					"31/15/1985", plano, "paciente@gmail.com",
 					"Telefone celular", "10/10/2010");
 			Assert.fail("Esperava excessao de data invalida");
 		} catch (Exception e) {
-			Assert.assertEquals("Data invalida.", e.getMessage());
+			Assert.assertEquals("Data de nascimento invalida.", e.getMessage());
+		}
+		
+		try {
+			paciente = new Paciente("Maria da Silva", "450.254.268-03", endereco,
+					foneResidencial, foneComercial, foneCelular,
+					"30/02/2011", plano, "paciente@gmail.com",
+					"Telefone celular", "10/10/2010");
+			Assert.fail("Esperava excessao de data invalida");
+		} catch (Exception e) {
+			Assert.assertEquals("Data de nascimento invalida.", e.getMessage());
 		}
 		
 		
@@ -149,44 +169,44 @@ public class TestaPaciente {
 		
 		try {
 			paciente = new Paciente("Maria da Silva", "450.254.268-03", endereco,
-					telefone1,telefone2,telefone3,
+					foneResidencial, foneComercial, foneCelular,
 					"31/11/1985", plano, "paciente@gmail.com",
 					"Telefone celular", "10/10/2010");
 			Assert.fail("Esperava excessao de data invalida");
 		} catch (Exception e) {
-			Assert.assertEquals("Data invalida.", e.getMessage());
+			Assert.assertEquals("Data de nascimento invalida.", e.getMessage());
 		}
 		
 		try {
 			paciente = new Paciente("Maria da Silva", "450.254.268-03", endereco,
-					telefone1,telefone2,telefone3,
+					foneResidencial, foneComercial, foneCelular,
 					"31/04/1985", plano, "paciente@gmail.com",
 					"Telefone celular", "10/10/2010");
 			Assert.fail("Esperava excessao de data invalida");
 		} catch (Exception e) {
-			Assert.assertEquals("Data invalida.", e.getMessage());
+			Assert.assertEquals("Data de nascimento invalida.", e.getMessage());
 		}
 		
 		//Testa se o mes de fevereiro pode ou nao ter 29 dias
 		
 		try {
 			paciente = new Paciente("Maria da Silva", "450.254.268-03", endereco,
-					telefone1,telefone2,telefone3,
+					foneResidencial, foneComercial, foneCelular,
 					"29/02/2010", plano, "paciente@gmail.com",
 					"Telefone celular", "10/10/2010");
 			Assert.fail("Esperava excessao de data invalida");
 		} catch (Exception e) {
-			Assert.assertEquals("Data invalida.", e.getMessage());
+			Assert.assertEquals("Data de nascimento invalida.", e.getMessage());
 		}
 		
 		try {
 			paciente = new Paciente("Maria da Silva", "450.254.268-03", endereco,
-					telefone1,telefone2,telefone3,
+					foneResidencial, foneComercial, foneCelular,
 					"29/02/1985", plano, "paciente@gmail.com",
 					"Telefone celular", "10/10/2010");
 			Assert.fail("Esperava excessao de data invalida");
 		} catch (Exception e) {
-			Assert.assertEquals("Data invalida.", e.getMessage());
+			Assert.assertEquals("Data de nascimento invalida.", e.getMessage());
 		}
 		
 	}
@@ -197,7 +217,7 @@ public class TestaPaciente {
 		
 		try {
 			paciente = new Paciente("Maria da Silva", "450.254.268-03", endereco,
-					telefone1,telefone2,telefone3,
+					foneResidencial, foneComercial, foneCelular,
 					"05/04/1985", plano, "",
 					"Telefone celular", "10/10/2010");
 			Assert.fail("Esperava excessao de email invalido");
@@ -207,7 +227,7 @@ public class TestaPaciente {
 		
 		try {
 			paciente = new Paciente("Maria da Silva", "450.254.268-03", endereco,
-					telefone1,telefone2,telefone3,
+					foneResidencial, foneComercial, foneCelular,
 					"05/04/1985", plano, "paciente",
 					"Telefone celular", "10/10/2010");
 			Assert.fail("Esperava excessao de email invalido");
@@ -217,7 +237,7 @@ public class TestaPaciente {
 		
 		try {
 			paciente = new Paciente("Maria da Silva", "450.254.268-03", endereco,
-					telefone1,telefone2,telefone3,
+					foneResidencial, foneComercial, foneCelular,
 					"05/04/1985", plano, "pacientegmail.com",
 					"Telefone celular", "10/10/2010");
 			Assert.fail("Esperava excessao de email invalido");
@@ -227,7 +247,7 @@ public class TestaPaciente {
 		
 		try {
 			paciente = new Paciente("Maria da Silva", "450.254.268-03", endereco,
-					telefone1,telefone2,telefone3,
+					foneResidencial, foneComercial, foneCelular,
 					"05/04/1985", plano, "paciente@gmail",
 					"Telefone celular", "10/10/2010");
 			Assert.fail("Esperava excessao de email invalido");
@@ -237,8 +257,38 @@ public class TestaPaciente {
 		
 		try {
 			paciente = new Paciente("Maria da Silva", "450.254.268-03", endereco,
-					telefone1,telefone2,telefone3,
+					foneResidencial, foneComercial, foneCelular,
 					"05/04/1985", plano, "@gmail.com.br",
+					"Telefone celular", "10/10/2010");
+			Assert.fail("Esperava excessao de email invalido");
+		} catch (Exception e) {
+			Assert.assertEquals("Email invalido.", e.getMessage());
+		}
+		
+		try {
+			paciente = new Paciente("Maria da Silva", "450.254.268-03", endereco,
+					foneResidencial, foneComercial, foneCelular,
+					"05/04/1985", plano, "brunna*@gmail.com.br",
+					"Telefone celular", "10/10/2010");
+			Assert.fail("Esperava excessao de email invalido");
+		} catch (Exception e) {
+			Assert.assertEquals("Email invalido.", e.getMessage());
+		}
+		
+		try {
+			paciente = new Paciente("Maria da Silva", "450.254.268-03", endereco,
+					foneResidencial, foneComercial, foneCelular,
+					"05/04/1985", plano, "#brunna#@gmail.com.br",
+					"Telefone celular", "10/10/2010");
+			Assert.fail("Esperava excessao de email invalido");
+		} catch (Exception e) {
+			Assert.assertEquals("Email invalido.", e.getMessage());
+		}
+		
+		try {
+			paciente = new Paciente("Maria da Silva", "450.254.268-03", endereco,
+					foneResidencial, foneComercial, foneCelular,
+					"05/04/1985", plano, "brunna;@gmail.com.br",
 					"Telefone celular", "10/10/2010");
 			Assert.fail("Esperava excessao de email invalido");
 		} catch (Exception e) {
@@ -252,7 +302,7 @@ public class TestaPaciente {
 		
 		try {
 			paciente = new Paciente("Maria da Silva", "450.254.268-03", endereco,
-					telefone1,telefone2,telefone3,
+					foneResidencial, foneComercial, foneCelular,
 					"05/04/1985", plano, "paciente@yahoo.com.br",
 					"", "10/10/2010");
 			Assert.fail("Esperava excessao de forma de contato invalida");
@@ -263,7 +313,7 @@ public class TestaPaciente {
 		
 		try {
 			paciente = new Paciente("Maria da Silva", "450.254.268-03", endereco,
-					telefone1,telefone2,telefone3,
+					foneResidencial, foneComercial, foneCelular,
 					"05/04/1985", plano, "paciente@yahoo.com.br",
 					"carta", "10/10/2010");
 			Assert.fail("Esperava excessao de forma de contato invalida");
@@ -278,10 +328,10 @@ public class TestaPaciente {
 		
 		try {
 			paciente = new Paciente("Maria da Silva", "450.254.268-03", endereco,
-					telefone1,telefone2,telefone3, "05/04/1985", plano, "brunna@gmail.com.br", "Telefone celular", "50/12/2010");
+					foneResidencial, foneComercial, foneCelular, "05/04/1985", plano, "brunna@gmail.com.br", "Telefone celular", "50/12/2010");
 			Assert.fail("Esperava excecao de data da utima visita invalida");
 		}catch (Exception e){
-			Assert.assertEquals("Data da ultima visita do paciente a clinica invalida.", e.getMessage());
+			Assert.assertEquals("Data da ultima visita invalida.", e.getMessage());
 		}
 		
 	}

@@ -202,7 +202,7 @@ public class Secretaria {
 	
 
 
-	private Medico melhorMedicoComHorarioVago(Especialidade especialidade) {
+	public Medico melhorMedicoComHorarioVago(Especialidade especialidade) {
 		Medico melhorMedico = new Medico();
 		Medico medicoReferencia;
 

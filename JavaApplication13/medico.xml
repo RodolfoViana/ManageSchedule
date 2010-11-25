@@ -26,6 +26,26 @@
           <retorno>false</retorno>
           <primeiraConsulta>true</primeiraConsulta>
         </Paciente.HorarioDeAtendimento>
+        <Paciente.HorarioDeAtendimento>
+          <AJUSTE__CALENDARIO>1</AJUSTE__CALENDARIO>
+          <numeroDeIdentificao>418</numeroDeIdentificao>
+          <calendario>
+            <time>1290995326406</time>
+            <timezone>GMT-03:00</timezone>
+          </calendario>
+          <retorno>false</retorno>
+          <primeiraConsulta>true</primeiraConsulta>
+        </Paciente.HorarioDeAtendimento>
+        <Paciente.HorarioDeAtendimento>
+          <AJUSTE__CALENDARIO>1</AJUSTE__CALENDARIO>
+          <numeroDeIdentificao>0</numeroDeIdentificao>
+          <calendario>
+            <time>1290995412078</time>
+            <timezone>GMT-03:00</timezone>
+          </calendario>
+          <retorno>false</retorno>
+          <primeiraConsulta>true</primeiraConsulta>
+        </Paciente.HorarioDeAtendimento>
       </listaPacientes>
       <listaPacientesCirurgia>
         <Paciente.HorarioDeAtendimento>
@@ -164,5 +184,35 @@
     </agenda>
     <nomeDoMedico>testando</nomeDoMedico>
     <especialidade>OMBRO</especialidade>
+  </Medico.Medico>
+  <Medico.Medico>
+    <agenda>
+      <diasDeExpediente/>
+      <diasDeCirurgia>
+        <Medico.DiaDeTrabalho>
+          <entrou>10:00</entrou>
+          <saiu>12:00</saiu>
+          <diaSemana>TERCA</diaSemana>
+        </Medico.DiaDeTrabalho>
+      </diasDeCirurgia>
+      <listaPacientes/>
+      <listaPacientesCirurgia/>
+      <tempoPrimeiraConsulta>20</tempoPrimeiraConsulta>
+      <tempoConsultaRetorno>20</tempoConsultaRetorno>
+    </agenda>
+    <nomeDoMedico>tessss</nomeDoMedico>
+    <especialidade>TORNOZELO</especialidade>
+  </Medico.Medico>
+  <Medico.Medico>
+    <agenda>
+      <diasDeExpediente/>
+      <diasDeCirurgia/>
+      <listaPacientes/>
+      <listaPacientesCirurgia/>
+      <tempoPrimeiraConsulta>1</tempoPrimeiraConsulta>
+      <tempoConsultaRetorno>2</tempoConsultaRetorno>
+    </agenda>
+    <nomeDoMedico>dsda</nomeDoMedico>
+    <especialidade>PUNHO</especialidade>
   </Medico.Medico>
 </list>
