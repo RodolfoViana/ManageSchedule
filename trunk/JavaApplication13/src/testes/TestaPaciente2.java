@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import Paciente.EnderecoDoPaciente;
 import Paciente.Paciente;
-import Paciente.TelefonesDeContato;
+import Paciente.TelefoneDeContato;
 import PlanoDeSaude.PlanoDeSaude;
 
 //Testa metodos da classe paciente
@@ -18,8 +18,8 @@ public class TestaPaciente2 {
 	PlanoDeSaude novoPlano;
 	EnderecoDoPaciente endereco;
 	EnderecoDoPaciente novoEndereco;
-	TelefonesDeContato telefones;
-	TelefonesDeContato novosTelefones;
+	TelefoneDeContato foneResidencial, foneComercial, foneCelular;
+	TelefoneDeContato novoFoneResidencial, novoFoneComercial, novoFoneCelular;
 	
 	@Before
 	public void testaPlano() throws Exception{
@@ -44,34 +44,49 @@ public class TestaPaciente2 {
 	}
 
 	@Before
-	public void testaTelefone() throws Exception {
-		telefones = new TelefonesDeContato("(83)3333-0000", "(11)2111-9988",
-				"(83)8845-9658");
+	public void testaTelefoneResidencial() throws Exception {
+		foneResidencial = new TelefoneDeContato("(83)3333-0000");
 	}
 
 	@Before
-	public void testaNovoTelefone() throws Exception {
-		novosTelefones = new TelefonesDeContato("(83)1234-5678", "",
-				"(83)8888-0000");
+	public void testaNovoTelefoneResidencial() throws Exception {
+		novoFoneResidencial = new TelefoneDeContato("(83)1234-5678");
+	}
+	
+	@Before
+	public void testaTelefoneComercial() throws Exception {
+		foneComercial = new TelefoneDeContato("(11)2111-9988");
+	}
+	
+	@Before
+	public void testaNovoTelefoneComercial() throws Exception {
+		novoFoneComercial = new TelefoneDeContato("(11)1515-1515");
+	}
+	
+	@Before
+	public void testaTelefoneCelular() throws Exception {
+		foneCelular = new TelefoneDeContato("(83)8888-0000");
+	}
+	
+	@Before
+	public void testaNovoTelefoneCelular() throws Exception {
+		novoFoneCelular = new TelefoneDeContato("(89)4545-4545");
 	}
 
 	@Test
 	public void testPaciente() throws Exception {
 
 		paciente = new Paciente("Maria da Silva", "450.254.268-03", endereco,
-				telefones, "30/12/1990", plano, "paciente@yahoo.com.br",
+				foneResidencial, foneComercial, foneCelular, "30/12/1990", plano, "paciente@yahoo.com.br",
 				"Telefone celular", "10/10/2010");
 
 		Assert.assertEquals("Mensagem incorreta", "Maria da Silva",
 				paciente.getNome());
 		Assert.assertEquals("Mensagem incorreta", "450.254.268-03",
 				paciente.getCpf());
-		Assert.assertEquals("Mensagem incorreta", "(83)3333-0000", paciente
-				.getTelefones().getFoneResidencial());
-		Assert.assertEquals("Mensagem incorreta", "(11)2111-9988", paciente
-				.getTelefones().getFoneComercial());
-		Assert.assertEquals("Mensagem incorreta", "(83)8845-9658", paciente
-				.getTelefones().getFoneCelular());
+		Assert.assertEquals("Mensagem incorreta", "(83)3333-0000", paciente.getTelefoneResidencial().getTelefone());
+		Assert.assertEquals("Mensagem incorreta", "(11)2111-9988", paciente.getTelefoneComercial().getTelefone());
+		Assert.assertEquals("Mensagem incorreta", "(83)8888-0000", paciente.getTelefoneCelular().getTelefone());
 		Assert.assertEquals("Mensagem incorreta", "30/12/1990",
 				paciente.getDataDeNascimento());
 		Assert.assertEquals(
@@ -84,15 +99,30 @@ public class TestaPaciente2 {
 				paciente.getFormaDeContato());
 		Assert.assertEquals("Mensagem incorreta", "10/10/2010",
 				paciente.getDataDaUltimaVisita());
-		
+		Assert.assertEquals("Mensagem incorreta", "Nome: Maria da Silva",
+				paciente.toString());
+		Assert.assertEquals(
+				"Numero de identificacao: "
+						+ paciente.getNumeroDeIdentificacao() + "Nome: "
+						+ paciente.getNome() + " Plano: "
+						+ paciente.getPlanoDeSaude().getNomeDoPlano(),
+				paciente.imprime());
 		
 		paciente.setEndereco(novoEndereco);
 		Assert.assertEquals("Mensagem incorreta", novoEndereco.toString(),
 				paciente.getEndereco().toString());
 
-		paciente.setTelefones(novosTelefones);
-		Assert.assertEquals("Mensagem incorreta", novosTelefones.toString(),
-				paciente.getTelefones().toString());
+		paciente.setTelefoneResidencial(novoFoneResidencial);
+		Assert.assertEquals("Mensagem incorreta", "(83)1234-5678",
+				paciente.getTelefoneResidencial().getTelefone());
+		
+		paciente.setTelefoneComercial(novoFoneComercial);
+		Assert.assertEquals("Mensagem incorreta", "(11)1515-1515",
+				paciente.getTelefoneComercial().getTelefone());
+		
+		paciente.setTelefoneCelular(novoFoneCelular);
+		Assert.assertEquals("Mensagem incorreta", "(89)4545-4545",
+				paciente.getTelefoneCelular().getTelefone());
 		
 		paciente.setPlanoDeSaude(novoPlano);
 		Assert.assertEquals(
@@ -128,21 +158,21 @@ public class TestaPaciente2 {
 	public void testaIdade() throws Exception {
 
 		paciente = new Paciente("Maria da Silva", "450.254.268-03", endereco,
-				telefones, "05/05/1985", plano, "paciente@yahoo.com.br",
+				foneResidencial, foneComercial, foneCelular, "05/05/1985", plano, "paciente@yahoo.com.br",
 				"Telefone celular", "10/10/2010");
 
 		Assert.assertEquals(25, paciente.getIdade()); // paciente ja completou
 														// 25 anos
 
 		paciente = new Paciente("Maria da Silva", "450.254.268-03", endereco,
-				telefones, "20/05/1990", plano, "paciente@yahoo.com.br",
+				foneResidencial, foneComercial, foneCelular, "20/05/1990", plano, "paciente@yahoo.com.br",
 				"Telefone celular", "10/10/2010");
 
 		Assert.assertEquals(20, paciente.getIdade()); // paciente ja completou
 														// 20 anos
 
 		paciente = new Paciente("Maria da Silva", "450.254.268-03", endereco,
-				telefones, "30/12/1990", plano, "paciente@yahoo.com.br",
+				foneResidencial, foneComercial, foneCelular, "30/12/1990", plano, "paciente@yahoo.com.br",
 				"Telefone celular", "10/10/2010");
 
 		Assert.assertEquals(19, paciente.getIdade()); // paciente ainda nao

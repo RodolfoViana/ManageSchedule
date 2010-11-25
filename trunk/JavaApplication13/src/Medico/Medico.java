@@ -212,7 +212,8 @@ public class Medico implements Serializable{
 		+ "\nO tempo que demora na primeira consulta eh: "
 		+ this.getTempoPrimeiraConsulta() + " minutos"
 		+ "\nO tempo que demora na consulta de retorno eh: "
-		+ this.getTempoConsultaRetorno() + " minutos";
+		+ this.getTempoConsultaRetorno() + " minutos" + "\n\n" +
+                 this.agendaMedico();
 	}
 	/**
 	 * Imprime a agenda do medico

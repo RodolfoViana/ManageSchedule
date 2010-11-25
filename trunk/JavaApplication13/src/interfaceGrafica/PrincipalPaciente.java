@@ -4,21 +4,21 @@
  */
 
 /*
- * PainelPrincipalPaciente.java
+ * PrincipalPaciente.java
  *
- * Created on 23/11/2010, 09:15:13
+ * Created on 24/11/2010, 19:48:38
  */
 
 package interfaceGrafica;
 
 /**
  *
- * @author rodolfolv
+ * @author Administrador
  */
-public class PainelPrincipalPaciente extends javax.swing.JPanel {
+public class PrincipalPaciente extends javax.swing.JPanel {
 
-    /** Creates new form PainelPrincipalPaciente */
-    public PainelPrincipalPaciente() {
+    /** Creates new form PrincipalPaciente */
+    public PrincipalPaciente() {
         initComponents();
     }
 
@@ -53,7 +53,7 @@ public class PainelPrincipalPaciente extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -79,7 +79,7 @@ public class PainelPrincipalPaciente extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -105,7 +105,7 @@ public class PainelPrincipalPaciente extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -131,7 +131,7 @@ public class PainelPrincipalPaciente extends javax.swing.JPanel {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
+                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -153,6 +153,7 @@ public class PainelPrincipalPaciente extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,6 +166,7 @@ public class PainelPrincipalPaciente extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 402, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -181,27 +183,27 @@ public class PainelPrincipalPaciente extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Main.painelCadastraPaciente = new PainelCadastraPaciente();
+        Main.painelCadastraPaciente = new CadastraPaciente();
         Main.frame1.setContentPane(Main.painelCadastraPaciente);
         Main.frame1.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+}//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       Main.painelExcluiPaciente = new PainelExcluiPaciente();
-       Main.frame1.setContentPane(Main.painelExcluiPaciente);
-       Main.frame1.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-       Main.frame1.setContentPane(Main.painelPrincipal);
-       Main.frame1.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+        Main.painelExcluiPaciente = new PainelExcluiPaciente();
+        Main.frame1.setContentPane(Main.painelExcluiPaciente);
+        Main.frame1.setVisible(true);
+}//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Main.painelListadePacientes = new PainelListaDePacientes();
+        Main.painelListadePacientes = new ListaPaciente();
         Main.frame1.setContentPane(Main.painelListadePacientes);
         Main.frame1.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+}//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        Main.frame1.setContentPane(Main.painelPrincipal);
+        Main.frame1.setVisible(true);
+}//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

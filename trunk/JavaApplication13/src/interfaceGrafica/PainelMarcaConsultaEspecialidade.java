@@ -11,6 +11,15 @@
 
 package interfaceGrafica;
 
+import Medico.Especialidade;
+import Medico.Medico;
+import Paciente.HorarioDeAtendimento;
+import Paciente.Paciente;
+import interfaceUsuario.MainSecretaria;
+import java.util.Iterator;
+import java.util.List;
+import persistencia.GravaLerMedico;
+
 /**
  *
  * @author Administrador
@@ -35,16 +44,20 @@ public class PainelMarcaConsultaEspecialidade extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
-        jRadioButton6 = new javax.swing.JRadioButton();
-        jRadioButton7 = new javax.swing.JRadioButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea3 = new javax.swing.JTextArea();
+        nomeDoPaciente = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        tipoDeConsulta = new javax.swing.JComboBox();
+        especia = new javax.swing.JComboBox();
+        jButton3 = new javax.swing.JButton();
+        diaDaConsulta = new javax.swing.JLabel();
+        mag2 = new javax.swing.JLabel();
+        medicoDaConsulta = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        limpar = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -73,31 +86,36 @@ public class PainelMarcaConsultaEspecialidade extends javax.swing.JPanel {
 
         jLabel2.setText("Tipo da Consulta:");
 
-        jRadioButton1.setText("Primeira Consulta");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
-            }
-        });
-
-        jRadioButton2.setText("Consulta Retorno");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
-            }
-        });
-
         jLabel3.setText("Especialidade:");
 
-        jRadioButton3.setText("Joelho");
+        jTextArea3.setColumns(20);
+        jTextArea3.setRows(5);
+        String c = Main.secretaria.getListaDePaciente().toString();
 
-        jRadioButton4.setText("Quadril");
+        c = c.replace("[", "");
+        c = c.replace("]", "");
+        c = c.replace(",", "\n");
+        jTextArea3.setText(c);
+        jScrollPane3.setViewportView(jTextArea3);
 
-        jRadioButton5.setText("Tornozelo");
+        jLabel4.setText("Nome do Paciente:");
 
-        jRadioButton6.setText("Punho");
+        tipoDeConsulta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Primeira consulta", "Consulta Retorno" }));
 
-        jRadioButton7.setText("Ombro");
+        especia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Joelho", "Quadril", "Tornozelo", "Ombro", "Punho" }));
+
+        jButton3.setText("Tentar Marcar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        diaDaConsulta.setText("jLabel5");
+
+        mag2.setText("jLabel5");
+
+        medicoDaConsulta.setText("jLabel5");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -106,34 +124,34 @@ public class PainelMarcaConsultaEspecialidade extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(especia, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tipoDeConsulta, 0, 317, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRadioButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jRadioButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
-                                        .addGap(13, 13, 13)))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jRadioButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jRadioButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jRadioButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
-                                        .addGap(122, 122, 122)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGap(119, 119, 119))
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nomeDoPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                        .addGap(77, 77, 77))))
+                        .addContainerGap()
+                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(diaDaConsulta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(medicoDaConsulta)
+                    .addComponent(mag2))
+                .addGap(155, 155, 155))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,20 +159,31 @@ public class PainelMarcaConsultaEspecialidade extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton4)
-                    .addComponent(jRadioButton5))
+                    .addComponent(tipoDeConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton6)
-                    .addComponent(jRadioButton7))
-                .addContainerGap(100, Short.MAX_VALUE))
+                    .addComponent(jLabel3)
+                    .addComponent(especia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(nomeDoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton3))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(diaDaConsulta)
+                        .addGap(59, 59, 59))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(mag2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(medicoDaConsulta)
+                        .addGap(22, 22, 22))))
         );
 
         jButton1.setText("Voltar");
@@ -164,7 +193,19 @@ public class PainelMarcaConsultaEspecialidade extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("OK");
+        limpar.setText("Limpar");
+        limpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limparActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Confirmar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -177,8 +218,11 @@ public class PainelMarcaConsultaEspecialidade extends javax.swing.JPanel {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
-                        .addGap(254, 254, 254)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(limpar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton4)
+                        .addGap(176, 176, 176)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -191,40 +235,135 @@ public class PainelMarcaConsultaEspecialidade extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(limpar)
+                    .addComponent(jButton4))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-}//GEN-LAST:event_jRadioButton1ActionPerformed
+    private Paciente pedePaciente(String paciente) {
+       List<Paciente> listaDePaciente = Main.secretaria.getListaDePaciente();
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:
-}//GEN-LAST:event_jRadioButton2ActionPerformed
+       Paciente novoPaciente = null;
+	for (Paciente pacientes : listaDePaciente) {
+	    if ( pacientes.getNome().equalsIgnoreCase(paciente)){
+                novoPaciente =  pacientes;
+                return novoPaciente;
+            }
+        }
+        return novoPaciente;
+	}
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        Main.frame1.setContentPane(Main.painelPrincipalMarca);
        Main.frame1.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private Especialidade especialidade(String semana){
+
+        for (int i = 0; i < Especialidade.values().length ; i++ ){
+            if (Especialidade.values()[i].toString().equalsIgnoreCase(semana)){
+                return Especialidade.values()[i];
+            }
+        }
+        return null;
+    }
+
+    private boolean temMedico(Especialidade especialidade){
+     List<Medico> listaDeMedico = Main.secretaria.getListaDeMedico();
+
+     Iterator<Medico> it = listaDeMedico.iterator();
+     
+     while (it.hasNext()){
+         Medico novoMedico = it.next();
+         if (novoMedico.getEspecialidade().equals(especialidade) && !novoMedico.getDiasDeExpediente().isEmpty()){
+            return true;
+         }
+         
+     
+         
+     }
+     return false;
+
+
+    }
+
+    private Medico pegaMedico(Especialidade especialidade){
+     List<Medico> listaDeMedico = Main.secretaria.getListaDeMedico();
+
+     Iterator<Medico> it = listaDeMedico.iterator();
+
+     while (it.hasNext()){
+         Medico novoMedico = it.next();
+         if (novoMedico.getEspecialidade().equals(especialidade) && !novoMedico.getDiasDeExpediente().isEmpty()){
+            return novoMedico;
+         }
+
+
+
+     }
+     return null;
+
+
+    }
+
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
+        try{
+            
+           Paciente paciente = pedePaciente(nomeDoPaciente.getText());
+           paciente.setHorarioDeAtendimento(new HorarioDeAtendimento(paciente.getNumeroDeIdentificacao(), tipoDeConsulta.getSelectedItem().toString().equalsIgnoreCase("Primeira consulta"), tipoDeConsulta.getSelectedItem().toString().equalsIgnoreCase("Consulta Retorno")));
+ 
+          
+
+           if (temMedico(especialidade(especia.getSelectedItem().toString()))){
+               
+                diaDaConsulta.setText(MainSecretaria.confirmacaoConsulta(pegaMedico(especialidade(especia.getSelectedItem().toString())), paciente));
+                medicoDaConsulta.setText(pegaMedico(especialidade(especia.getSelectedItem().toString())).getNomeDoMedico());
+                GravaLerMedico.gravaMedico(Main.secretaria.getListaDeMedico());
+           }
+           else {
+           mag2.setText("Medicos sem horario");
+           }
+            
+        } catch (Exception e){
+            diaDaConsulta.setText("Nao existe medico para essa especialidade");
+        }
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void limparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparActionPerformed
+        mag2.setText("");
+        diaDaConsulta.setText("");
+        
+        nomeDoPaciente.setText("");
+    }//GEN-LAST:event_limparActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        mag2.setText("Paciente marcado. Click em voltar");
+}//GEN-LAST:event_jButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel diaDaConsulta;
+    private javax.swing.JComboBox especia;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JRadioButton jRadioButton6;
-    private javax.swing.JRadioButton jRadioButton7;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea jTextArea3;
+    private javax.swing.JButton limpar;
+    private javax.swing.JLabel mag2;
+    private javax.swing.JLabel medicoDaConsulta;
+    private javax.swing.JTextField nomeDoPaciente;
+    private javax.swing.JComboBox tipoDeConsulta;
     // End of variables declaration//GEN-END:variables
 
 }
