@@ -77,7 +77,7 @@ public class TestaDiaDeTrabalho {
 	@Test public void testaGetSaiu(){
 		Assert.assertEquals("Hora de Saida Incorreta", "15:00", dia.getSaiu());
 	}
-	@Test public void TestSetEntrou() throws Exception{
+	@Test public void testSetEntrou() throws Exception{
 		dia.setEntrou("13:00");
 		Assert.assertEquals("Hora de Entrada Incorreta", "13:00", dia.getEntrou());
 	try{
@@ -87,7 +87,7 @@ public class TestaDiaDeTrabalho {
 		Assert.assertEquals("Menssagem Incorreta","Horarios invalidos", ex.getMessage());
 	}
 	}
-	@Test public void TestSetSaiu() throws Exception{
+	@Test public void testSetSaiu() throws Exception{
 		dia.setSaiu("16:00");
 		Assert.assertEquals("Hora de Saida Incorreta", "16:00", dia.getSaiu());
 		try{
@@ -104,7 +104,7 @@ public class TestaDiaDeTrabalho {
 		}
 
 	}
-	@Test public void TestToString(){
+	@Test public void testToString(){
 		Assert.assertEquals("Menssagem Incorreta", "12:00 - 15:00", dia.toString());
 	}
 }

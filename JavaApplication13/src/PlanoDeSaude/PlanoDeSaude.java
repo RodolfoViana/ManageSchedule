@@ -32,7 +32,7 @@ public class PlanoDeSaude {
 	 * @throws Exception Caso nome seja vazio ou preco seja menor ou igual a zero e se o telefone nao tiver no padrao (nn)nnnn-nnnn
 	 */
 	public PlanoDeSaude(String nomeDoPlano, Double precoDoPlano, String telefoneDoPlano) throws Exception {
-		if (nomeDoPlano == STRING_VAZIA || nomeDoPlano == null) {
+		if (nomeDoPlano.equals(STRING_VAZIA) || nomeDoPlano == null) {
 			throw new Exception(
 					"O nome do plano nao pode ser nulo ou vazio.");
 		}

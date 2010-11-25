@@ -16,10 +16,9 @@ import PlanoDeSaude.PlanoDeSaude;
  * @author Grupo 7
  * 
  */
-public class Paciente{
+public class Paciente {
 
 	private final int MES_DE_FEVEREIRO = 02;
-
 	private String nome;
 	private String cpf;
 	private EnderecoDoPaciente endereco;
@@ -32,27 +31,38 @@ public class Paciente{
 	private String formaDeContato;
 	private String dataDaUltimaVisita;
 	private HorarioDeAtendimento horarioDeAtendimento;
-	
+
 	/**
 	 * Cadastra um paciente recebendo como parametros o nome, o cpf, o endereco,
 	 * o telefone residencial, comercial e o celular, a data de nascimento, o
 	 * plano de saude, o email do paciente e a melhor forma de contato com o
-	 * mesmo.	 
-	 * @param nome Nome do paciente.
-	 * @param cpf Cpf do paciente.
-	 * @param endereco Endereco do paciente.
-	 * @param telefones Telefones do paciente
-	 * @param dataDeNascimento Data de nascimento do paciente.
-	 * @param planoDeSaude Plano de Saude utilizado pelo paciente.
-	 * @param email Email do paciente.
-	 * @param formaDeContato Melhor forma de contato com o paciente.
+	 * mesmo.
+	 * 
+	 * @param nome
+	 *            Nome do paciente.
+	 * @param cpf
+	 *            Cpf do paciente.
+	 * @param endereco
+	 *            Endereco do paciente.
+	 * @param telefones
+	 *            Telefones do paciente
+	 * @param dataDeNascimento
+	 *            Data de nascimento do paciente.
+	 * @param planoDeSaude
+	 *            Plano de Saude utilizado pelo paciente.
+	 * @param email
+	 *            Email do paciente.
+	 * @param formaDeContato
+	 *            Melhor forma de contato com o paciente.
 	 * @throws Exception
 	 */
 	public Paciente(String nome, String cpf, EnderecoDoPaciente endereco,
-			TelefoneDeContato foneResidencial, TelefoneDeContato foneComercial, TelefoneDeContato foneCelular, String dataDeNascimento,
-			PlanoDeSaude planoDeSaude, String email, String formaDeContato) throws Exception {
+			TelefoneDeContato foneResidencial, TelefoneDeContato foneComercial,
+			TelefoneDeContato foneCelular, String dataDeNascimento,
+			PlanoDeSaude planoDeSaude, String email, String formaDeContato)
+			throws Exception {
 
-		if (nome.length() == 0 || nome.equals(null)) {
+		if (nome.length() == 0 || nome == null) {
 			throw new Exception(
 					"O nome do paciente nao pode ser nulo ou vazio.");
 		} else if (testaCpf(cpf) == false) {
@@ -63,7 +73,7 @@ public class Paciente{
 			throw new Exception("Email invalido.");
 		} else if (testaFormaDeContato(formaDeContato) == false) {
 			throw new Exception("Forma de contato invalida.");
-		} 
+		}
 
 		this.nome = nome;
 		this.cpf = cpf;
@@ -78,42 +88,46 @@ public class Paciente{
 		idade = calculaIdadeDoPaciente(dataDeNascimento);
 
 	}
-	
+
 	/**
 	 * Cadastra um paciente recebendo como parametros o nome, o cpf, o endereco,
 	 * o telefone residencial, comercial e o celular, a data de nascimento, o
 	 * plano de saude, o email do paciente e a melhor forma de contato com o
-	 * mesmo.	 
-	 * @param nome Nome do paciente.
-	 * @param cpf Cpf do paciente.
-	 * @param endereco Endereco do paciente.
-	 * @param telefones Telefones do paciente
-	 * @param dataDeNascimento Data de nascimento do paciente.
-	 * @param planoDeSaude Plano de Saude utilizado pelo paciente.
-	 * @param email Email do paciente.
-	 * @param formaDeContato Melhor forma de contato com o paciente.
-	 * @param dataDaUltimaVisita Data da ultima visita do paciente a clinica.
+	 * mesmo.
+	 * 
+	 * @param nome
+	 *            Nome do paciente.
+	 * @param cpf
+	 *            Cpf do paciente.
+	 * @param endereco
+	 *            Endereco do paciente.
+	 * @param telefones
+	 *            Telefones do paciente
+	 * @param dataDeNascimento
+	 *            Data de nascimento do paciente.
+	 * @param planoDeSaude
+	 *            Plano de Saude utilizado pelo paciente.
+	 * @param email
+	 *            Email do paciente.
+	 * @param formaDeContato
+	 *            Melhor forma de contato com o paciente.
+	 * @param dataDaUltimaVisita
+	 *            Data da ultima visita do paciente a clinica.
 	 * @throws Exception
 	 */
 	public Paciente(String nome, String cpf, EnderecoDoPaciente endereco,
-			TelefoneDeContato foneResidencial, TelefoneDeContato foneComercial, TelefoneDeContato foneCelular, String dataDeNascimento,
+			TelefoneDeContato foneResidencial, TelefoneDeContato foneComercial,
+			TelefoneDeContato foneCelular, String dataDeNascimento,
 			PlanoDeSaude planoDeSaude, String email, String formaDeContato,
 			String dataDaUltimaVisita) throws Exception {
 
-		this(nome, cpf, endereco, foneResidencial, foneComercial, foneCelular, dataDeNascimento, planoDeSaude, email, formaDeContato);
-		
-		if (testaDataDeNascimento(dataDaUltimaVisita) == false){
+		this(nome, cpf, endereco, foneResidencial, foneComercial, foneCelular,
+				dataDeNascimento, planoDeSaude, email, formaDeContato);
+
+		if (testaDataDeNascimento(dataDaUltimaVisita) == false) {
 			throw new Exception("Data da ultima visita invalida.");
 		}
 		this.dataDaUltimaVisita = dataDaUltimaVisita;
-	}
-
-	public HorarioDeAtendimento getHorarioDeAtendimento() {
-		return horarioDeAtendimento;
-	}
-
-	public void setHorarioDeAtendimento(HorarioDeAtendimento horarioDeAtendimento) {
-		this.horarioDeAtendimento = horarioDeAtendimento;
 	}
 
 	private boolean testaCpf(String cpf) {
@@ -236,6 +250,26 @@ public class Paciente{
 	}
 
 	/**
+	 * Retorna o horario de atendimento do paciente
+	 * 
+	 * @return Horario de atendimento
+	 */
+	public HorarioDeAtendimento getHorarioDeAtendimento() {
+		return horarioDeAtendimento;
+	}
+
+	/**
+	 * Muda o horario de atendimento para o passado como parametro
+	 * 
+	 * @param horarioDeAtendimento
+	 *            Novo horario de atendimento
+	 */
+	public void setHorarioDeAtendimento(
+			HorarioDeAtendimento horarioDeAtendimento) {
+		this.horarioDeAtendimento = horarioDeAtendimento;
+	}
+
+	/**
 	 * Retorna o nome do paciente
 	 * 
 	 * @return Nome do paciente
@@ -300,22 +334,25 @@ public class Paciente{
 
 	/**
 	 * Retorna os telefones para contato.
+	 * 
 	 * @return Telefones para contato.
 	 */
 	public TelefoneDeContato getTelefoneResidencial() {
 		return foneResidencial;
 	}
-	
+
 	/**
 	 * Retorna o telefone comercial.
+	 * 
 	 * @return Telefone comercial.
 	 */
 	public TelefoneDeContato getTelefoneComercial() {
 		return foneComercial;
 	}
-	
+
 	/**
 	 * Retorna o telefone celular.
+	 * 
 	 * @return Telefone celular.
 	 */
 	public TelefoneDeContato getTelefoneCelular() {
@@ -359,7 +396,6 @@ public class Paciente{
 		this.endereco = endereco;
 	}
 
-
 	/**
 	 * Muda o plano de saude para o passado como parametro.
 	 * 
@@ -394,7 +430,7 @@ public class Paciente{
 
 	/**
 	 * Muda a data da ultima visita para a passada como parametro.
-	 *  
+	 * 
 	 * @param novaData
 	 *            A data da visita mais recente do paciente a clinica.
 	 */
@@ -409,42 +445,58 @@ public class Paciente{
 	 * 
 	 * @param numeroDeIdentificacao
 	 *            Novo numero de identificacao
-	 */										 
+	 */
 	public void setNumeroDeIdentificacao(int numeroDeIdentificacao) {
-//		this.numeroDeIdentificacao = numeroDeIdentificacao;
 		horarioDeAtendimento.setNumeroDeIdentificao(numeroDeIdentificacao);
 	}
 
 	/**
 	 * Muda o telefone para o passado como parametro.
-	 * @param telefones Novo telefone para contato.
+	 * 
+	 * @param telefones
+	 *            Novo telefone para contato.
 	 */
 	public void setTelefoneResidencial(TelefoneDeContato foneResidencial) {
 		this.foneResidencial = foneResidencial;
 	}
-	
+
 	/**
 	 * Muda o telefone comercial para o passado como parametro.
-	 * @param foneComercial Novo telefone comercial.
+	 * 
+	 * @param foneComercial
+	 *            Novo telefone comercial.
 	 */
-	public void setTelefoneComercial(TelefoneDeContato foneComercial){
+	public void setTelefoneComercial(TelefoneDeContato foneComercial) {
 		this.foneComercial = foneComercial;
 	}
-	
+
 	/**
 	 * Muda o telefone celular para o passado como parametro.
-	 * @param foneCelular Novo telefone celular.
+	 * 
+	 * @param foneCelular
+	 *            Novo telefone celular.
 	 */
-	public void setTelefoneCelular(TelefoneDeContato foneCelular){
+	public void setTelefoneCelular(TelefoneDeContato foneCelular) {
 		this.foneCelular = foneCelular;
 	}
-	
-	public String toString(){
+
+	/**
+	 * Retorna uma String que representa o paciente
+	 */
+	public String toString() {
 		return "Nome: " + this.getNome();
-		}
-	
-	public String imprime(){
-		return "Numero de identificacao: " + this.getNumeroDeIdentificacao() + "Nome: " + this.getNome() + " Plano: " + this.getPlanoDeSaude().getNomeDoPlano();
-		}
+	}
+
+	/**
+	 * String com dados do paciente
+	 * 
+	 * @return Uma string que apresenta o numero de indentificacao do paciente,
+	 * o nome do mesmo e o plano de saude utilizado
+	 */
+	public String imprime() {
+		return "Numero de identificacao: " + this.getNumeroDeIdentificacao()
+				+ "Nome: " + this.getNome() + " Plano: "
+				+ this.getPlanoDeSaude().getNomeDoPlano();
+	}
 
 }

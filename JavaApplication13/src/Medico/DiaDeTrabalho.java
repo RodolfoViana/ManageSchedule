@@ -22,13 +22,13 @@ public class DiaDeTrabalho {
 	 * @throws Exception
 	 */
 
-	public DiaDeTrabalho(Semana diaSemana, String entrou, String saio) throws Exception{
+	public DiaDeTrabalho(Semana diaSemana, String entrou, String saiu) throws Exception{
 		int horaEntrou, horaSaiu;
 		
-		if(testaHorario(entrou)&&testaHorario(saio)){
-			if(entrou!=saio){
+		if(testaHorario(entrou)&&testaHorario(saiu)){
+			if(!entrou.equals(saiu)){
 				this.entrou = entrou;
-				this.saiu = saio;
+				this.saiu = saiu;
 			}else{
 				throw new Exception("Horarios invalidos");
 			}

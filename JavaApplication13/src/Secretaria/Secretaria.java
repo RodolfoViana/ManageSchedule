@@ -12,21 +12,27 @@ import Paciente.Paciente;
 import PlanoDeSaude.PlanoDeSaude;
 
 /**
- * Classe Secretaria usada para ter acesso a listas De Pacientes e de medicos te todo hospital,
- * Marcar conssulta/Cirurgia/Retorno, manipular lista de espera e etc..
+ * Classe Secretaria usada para ter acesso a listas De Pacientes e de medicos te
+ * todo hospital, Marcar conssulta/Cirurgia/Retorno, manipular lista de espera e
+ * etc..
+ * 
  * @author Grupo 7
- *
+ * 
  */
 public class Secretaria {
 	private List<Medico> listaDeMedico;
 	private List<Paciente> listaDePaciente;
 	private List<HorarioDeAtendimento> listaDeEspera;
-        private List<PlanoDeSaude> listaDePlanoDeSaude;
+	private List<PlanoDeSaude> listaDePlanoDeSaude;
 
 	/**
-	 * Constroi uma secretaria, apartir da lista de medico e da lista de paciente
-	 * @param listaDeMedico Lista de medicos
-	 * @param listaDePaciente Lista de Paciente
+	 * Constroi uma secretaria, a partir da lista de medico e da lista de
+	 * paciente
+	 * 
+	 * @param listaDeMedico
+	 *            Lista de medicos
+	 * @param listaDePaciente
+	 *            Lista de Paciente
 	 */
 	public Secretaria(List<Medico> listaDeMedico, List<Paciente> listaDePaciente) {
 		this.listaDeMedico = listaDeMedico;
@@ -34,25 +40,48 @@ public class Secretaria {
 		this.listaDeEspera = new ArrayList<HorarioDeAtendimento>();
 	}
 
-        
-	public Secretaria(List<Medico> listaDeMedico, List<Paciente> listaDePaciente, List<PlanoDeSaude> listaDePlanoDeSaude) {
+	/**
+	 * Cria um objeto secretaria a partir lista de medico, da lista de paciente
+	 * e da lista de plano de saude
+	 * 
+	 * @param listaDeMedico
+	 *            Lista de Medicos
+	 * @param listaDePaciente
+	 *            Lista de Pacientes
+	 * @param listaDePlanoDeSaude
+	 *            Lista de Plano de Saude
+	 */
+	public Secretaria(List<Medico> listaDeMedico,
+			List<Paciente> listaDePaciente,
+			List<PlanoDeSaude> listaDePlanoDeSaude) {
 		this.listaDeMedico = listaDeMedico;
 		this.listaDePaciente = listaDePaciente;
-                this.listaDePlanoDeSaude = listaDePlanoDeSaude;
+		this.listaDePlanoDeSaude = listaDePlanoDeSaude;
 		this.listaDeEspera = new ArrayList<HorarioDeAtendimento>();
 	}
-        
-        public List<PlanoDeSaude> getListaDePlanoDeSaude(){
-            return listaDePlanoDeSaude;
-        }
 
-        public void setListaDePlanoDeSaude(List<PlanoDeSaude> novoPlano){
-            listaDePlanoDeSaude = novoPlano;
-        }
-        
-        
+	/**
+	 * Retorna a lista de planos de saude
+	 * 
+	 * @return Lista de planos de saude
+	 */
+	public List<PlanoDeSaude> getListaDePlanoDeSaude() {
+		return listaDePlanoDeSaude;
+	}
+
+	/**
+	 * Muda a lista de planos de saude para a passada como parametro
+	 * 
+	 * @param novoPlano
+	 *            Nova lista de plano de saude
+	 */
+	public void setListaDePlanoDeSaude(List<PlanoDeSaude> novoPlano) {
+		listaDePlanoDeSaude = novoPlano;
+	}
+
 	/**
 	 * Recupera a lista de paciente
+	 * 
 	 * @return Lista de paciente
 	 */
 	public List<Paciente> getListaDePaciente() {
@@ -61,6 +90,7 @@ public class Secretaria {
 
 	/**
 	 * Recupera a lista de espera
+	 * 
 	 * @return Lista de espera
 	 */
 	public List<HorarioDeAtendimento> getListaDeEspera() {
@@ -69,6 +99,7 @@ public class Secretaria {
 
 	/**
 	 * Recupera lista de medico
+	 * 
 	 * @return Lista de medico
 	 */
 	public List<Medico> getListaDeMedico() {
@@ -77,87 +108,144 @@ public class Secretaria {
 
 	/**
 	 * Marca uma consulta passando um medico em especifico
-	 * @param medico Medico que se deve marcar a consulta
-	 * @param horario informa numero de identificacao do paciente e se a consulta eh de retorno ou primeira consulta
+	 * 
+	 * @param medico
+	 *            Medico que se deve marcar a consulta
+	 * @param horario
+	 *            informa numero de identificacao do paciente e se a consulta eh
+	 *            de retorno ou primeira consulta
 	 * @return True caso seja marcado com sucesso, falso caso contrario
 	 */
 	public boolean marcarConsulta(Medico medico, Paciente paciente) {
-		return medico.marcarConsulta(paciente.getHorarioDeAtendimento()); 
+		return medico.marcarConsulta(paciente.getHorarioDeAtendimento());
 	}
-	
-
 
 	/**
-	 * Marca uma consulta passando uma especialidade, eh procurado o medico que atende aquela especialidade e que tem o primeiro dia vago
-	 * @param especialidade Especialidade da consulta
-	 * @param horario informa numero de identificacao do paciente e se a consulta eh de retorno ou primeira consulta
+	 * Marca uma consulta passando um medico especifico, o paciente e a data que
+	 * se deseja marcar a consulta
+	 * 
+	 * @param medico
+	 *            Medico que sera marcada as consultas
+	 * @param paciente
+	 *            Paciente a ser consultado pelo medico
+	 * @param calendario
+	 *            Dia em que sera marcada a consulta
+	 * @return Um boolean que representa se foi possivel ou nao marcar a
+	 *         consulta
+	 */
+	public boolean marcarConsulta(Medico medico, Paciente paciente,
+			Calendar calendario) {
+		return medico.marcarConsulta(paciente.getHorarioDeAtendimento(),
+				calendario);
+	}
+
+	/**
+	 * Marca uma consulta passando uma especialidade, eh procurado o medico que
+	 * atende aquela especialidade e que tem o primeiro dia vago
+	 * 
+	 * @param especialidade
+	 *            Especialidade da consulta
+	 * @param horario
+	 *            informa numero de identificacao do paciente e se a consulta eh
+	 *            de retorno ou primeira consulta
 	 * @return True caso seja marcado com sucesso, falso caso contrario
 	 */
-	public boolean marcarConsultaPassandoEspecialidade(Especialidade especialidade, Paciente paciente) {
-		return marcarConsulta(melhorMedicoComHorarioVago(especialidade), paciente);
+	public boolean marcarConsultaPassandoEspecialidade(
+			Especialidade especialidade, Paciente paciente) {
+		return marcarConsulta(melhorMedicoComHorarioVago(especialidade),
+				paciente);
 	}
-	
+
+	/**
+	 * Marca uma consulta com uma data limite
+	 * 
+	 * @param horario
+	 *            informa numero de identificacao do paciente e se a consulta eh
+	 *            de retorno ou primeira consulta
+	 * @param medico
+	 * @param calendario
+	 *            Data limite da marcacao da consulta
+	 * @return True caso encontre alguma data ate a data limite, false caso
+	 *         contrario
+	 */
+	public boolean marcarConsultaComDataLimite(Medico medico,
+			Paciente paciente, Calendar calendario) {
+		return medico.marcarConsultaComDataLimite(
+				paciente.getHorarioDeAtendimento(), calendario);
+	}
+
 	/**
 	 * Remarca as consultas que foram excluidas
-	 * @param medico Medico que sera marcada as consultas
-	 * @param calendario Marcar uma consulta em um horario vago apartir dessa data
-	 * @return True caso tenha remarcado todas as consultas com sucesso, false caso contrario
+	 * 
+	 * @param medico
+	 *            Medico que sera marcada as consultas
+	 * @param calendario
+	 *            Marcar uma consulta em um horario vago apartir dessa data
+	 * @return True caso tenha remarcado todas as consultas com sucesso, false
+	 *         caso contrario
 	 */
-	public boolean remacarConsulta(Medico medico, Calendar calendario){
-		List<HorarioDeAtendimento> pacientesDesmarcados = excluiTodasAsConsultasDoDia(medico, calendario);
-		for (HorarioDeAtendimento horario: pacientesDesmarcados){
+	public boolean remacarConsulta(Medico medico, Calendar calendario) {
+		List<HorarioDeAtendimento> pacientesDesmarcados = excluiTodasAsConsultasDoDia(
+				medico, calendario);
+		for (HorarioDeAtendimento horario : pacientesDesmarcados) {
 			medico.marcarConsulta(horario, calendario);
 		}
 		return true;
 	}
-	
-	
-	public boolean marcarConsulta(Medico medico, Paciente paciente, Calendar calendario){
-		return medico.marcarConsulta(paciente.getHorarioDeAtendimento(), calendario);
-	}
 
 	/**
 	 * Exclui as consultas de um determinado dia
-	 * @param medico Medico que sera desmarcado as consultas
-	 * @param calendario Dia que deve ser excluida as consultas
+	 * 
+	 * @param medico
+	 *            Medico que sera desmarcado as consultas
+	 * @param calendario
+	 *            Dia que deve ser excluida as consultas
 	 * @return Consultas que foram excluidas
 	 */
-	public List<HorarioDeAtendimento> excluiTodasAsConsultasDoDia(Medico medico, Calendar calendario){
-		List<HorarioDeAtendimento> listaDePacientesDoDia = mostraHorariosDoDia(medico, calendario);
+	public List<HorarioDeAtendimento> excluiTodasAsConsultasDoDia(
+			Medico medico, Calendar calendario) {
+		List<HorarioDeAtendimento> listaDePacientesDoDia = mostraHorariosDoDia(
+				medico, calendario);
 		medico.getListaDePacientes().removeAll(listaDePacientesDoDia);
 		return listaDePacientesDoDia;
 	}
-	
+
 	/**
-	 * Marca uma consulta com uma data limite
-	 * @param horario informa numero de identificacao do paciente e se a consulta eh de retorno ou primeira consulta
-	 * @param medico
-	 * @param calendario Data limite da marcacao da consulta
-	 * @return True caso encontre alguma data ate a data limite, false caso contrario
+	 * Adiciona horario em lista de espera
+	 * 
+	 * @param horario
+	 *            informa numero de identificacao do paciente e se a consulta eh
+	 *            de retorno ou primeira consulta
 	 */
-	public boolean marcarConsultaComDataLimite(Medico medico, Paciente paciente,  Calendar calendario){
-		return medico.marcarConsultaComDataLimite(paciente.getHorarioDeAtendimento(), calendario);
-	}
-	
-	/**
-	 * Adiciona horario em lista de espera	
-	 * @param horario informa numero de identificacao do paciente e se a consulta eh de retorno ou primeira consulta
-	 */
-	public void listaDeEspera(HorarioDeAtendimento horario){
+	public void listaDeEspera(HorarioDeAtendimento horario) {
 		this.listaDeEspera.add(horario);
 	}
-	
+
 	/**
 	 * Exclui uma consulta de um determinado medico
-	 * @param medico - O medico que vai ser removido a consulta
-	 * @param horario - Horario da consulta com informacoes do paciente
+	 * 
+	 * @param medico
+	 *            - O medico que vai ser removido a consulta
+	 * @param horario
+	 *            - Horario da consulta com informacoes do paciente
 	 * @return - A consulta removida
 	 */
-	public HorarioDeAtendimento excluirConsulta(Medico medico, HorarioDeAtendimento horario){
+	public HorarioDeAtendimento excluirConsulta(Medico medico,
+			HorarioDeAtendimento horario) {
 		return medico.excluirConsulta(horario);
 	}
-	
-	public boolean marcarCirurgia(Medico medico, Paciente paciente){
+
+	/**
+	 * Marca uma cirurgia para um medico especifico
+	 * 
+	 * @param medico
+	 *            Medico que sera marcada a cirurgia
+	 * @param paciente
+	 *            Paciente que marcara a cirurgia com o medico.
+	 * @return Um boolean que representa se foi possivel ou nao marcar a
+	 *         cirurgia
+	 */
+	public boolean marcarCirurgia(Medico medico, Paciente paciente) {
 		Especialidade especialidade = medico.getEspecialidade();
 
 		List<Medico> listaDeMedicoPorEspecialidade = new ArrayList<Medico>();
@@ -170,26 +258,27 @@ public class Secretaria {
 				listaDeMedicoPorEspecialidade.add(novoMedico);
 			}
 		}
-	
+
 		Iterator<Medico> id2 = listaDeMedicoPorEspecialidade.iterator();
-		
-		HorarioDeAtendimento horarioLivreDoMedico = medico.proximoDiaLivreCirurgia(paciente.getHorarioDeAtendimento());
-		
-		while (id2.hasNext()){
+
+		HorarioDeAtendimento horarioLivreDoMedico = medico
+				.proximoDiaLivreCirurgia(paciente.getHorarioDeAtendimento());
+
+		while (id2.hasNext()) {
 			Medico novoMedico = id2.next();
-			if (!mesmaHoraCirurgia(novoMedico, horarioLivreDoMedico)){
-				return medico.marcarCirurgia(paciente.getHorarioDeAtendimento());	
-			}
-			else {
+			if (!mesmaHoraCirurgia(novoMedico, horarioLivreDoMedico)) {
+				return medico
+						.marcarCirurgia(paciente.getHorarioDeAtendimento());
+			} else {
 				Calendar calendario = horarioLivreDoMedico.getCalendario();
-				if ((calendario.get(Calendar.DAY_OF_MONTH) == calendario.getActualMaximum(Calendar.DAY_OF_MONTH))){
+				if ((calendario.get(Calendar.DAY_OF_MONTH) == calendario
+						.getActualMaximum(Calendar.DAY_OF_MONTH))) {
 					calendario.roll(Calendar.DAY_OF_MONTH, true);
 					calendario.roll(Calendar.MONTH, true);
 					horarioLivreDoMedico.setCalendario(calendario);
 					paciente.setHorarioDeAtendimento(horarioLivreDoMedico);
 					return marcarCirurgia(medico, paciente);
-				}
-				else {
+				} else {
 					calendario.roll(Calendar.DAY_OF_MONTH, true);
 					horarioLivreDoMedico.setCalendario(calendario);
 					paciente.setHorarioDeAtendimento(horarioLivreDoMedico);
@@ -199,9 +288,14 @@ public class Secretaria {
 		}
 		return medico.marcarCirurgia(horarioLivreDoMedico);
 	}
-	
 
-
+	/**
+	 * Retorna o medico que tem o horario vago mais proximo a data atual
+	 * 
+	 * @param especialidade
+	 *            Especialidade dos medicos que vao ter o horario verificado
+	 * @return Medico com horario livre mais proximo da data atual
+	 */
 	public Medico melhorMedicoComHorarioVago(Especialidade especialidade) {
 		Medico melhorMedico = new Medico();
 		Medico medicoReferencia;
@@ -220,55 +314,66 @@ public class Secretaria {
 			medicoReferencia = listaDeMedicoPorEspecialidade.get(0);
 			Iterator<Medico> it = listaDeMedicoPorEspecialidade.iterator();
 			while (it.hasNext()) {
-				Medico novoMedico = it.next();				
-				if (novoMedico.primeiroDiaLivre().compareTo(medicoReferencia.primeiroDiaLivre()) <= 0) {
+				Medico novoMedico = it.next();
+				if (novoMedico.primeiroDiaLivre().compareTo(
+						medicoReferencia.primeiroDiaLivre()) <= 0) {
 					melhorMedico = novoMedico;
 				}
 			}
 		}
 		return melhorMedico;
 	}
+
+	/**
+	 * Retorna a lista de medicos
+	 * 
+	 * @return Lista de Medicos
+	 */
+	public List<String> getListaDeMedicos() {
+		List<String> medicos = new ArrayList<String>();
+		Iterator<Medico> it = this.listaDeMedico.iterator();
 	
-	
-	private List<HorarioDeAtendimento> mostraHorariosDoDia(Medico medico, Calendar calendario){
+		while (it.hasNext()) {
+			Medico novoMedico = it.next();
+			medicos.add(novoMedico.getNomeDoMedico());
+		}
+		return medicos;
+	}
+
+	private List<HorarioDeAtendimento> mostraHorariosDoDia(Medico medico,
+			Calendar calendario) {
 		List<HorarioDeAtendimento> listaDePacientesDoDia = new ArrayList<HorarioDeAtendimento>();
-		
-		Iterator<HorarioDeAtendimento> it = medico.getListaDePacientes().iterator();
-		
-		while (it.hasNext()){
+
+		Iterator<HorarioDeAtendimento> it = medico.getListaDePacientes()
+				.iterator();
+
+		while (it.hasNext()) {
 			HorarioDeAtendimento novoHorario = it.next();
-			
-			if (novoHorario.getMes() == calendario.get(Calendar.MONTH) && novoHorario.getDiaDoMes() == calendario.get(Calendar.DAY_OF_MONTH)){
+
+			if (novoHorario.getMes() == calendario.get(Calendar.MONTH)
+					&& novoHorario.getDiaDoMes() == calendario
+							.get(Calendar.DAY_OF_MONTH)) {
 				listaDePacientesDoDia.add(novoHorario);
-				}
+			}
 		}
 		return listaDePacientesDoDia;
 	}
-	
-	private boolean mesmaHoraCirurgia(Medico medico, HorarioDeAtendimento horario){
-		List<HorarioDeAtendimento> diasDeCirurgia = medico.getListaDePacientesCirurgia();
-		
+
+	private boolean mesmaHoraCirurgia(Medico medico,
+			HorarioDeAtendimento horario) {
+		List<HorarioDeAtendimento> diasDeCirurgia = medico
+				.getListaDePacientesCirurgia();
+
 		Iterator<HorarioDeAtendimento> id = diasDeCirurgia.iterator();
-		
-		while (id.hasNext()){
+
+		while (id.hasNext()) {
 			HorarioDeAtendimento novoHorario = id.next();
-			if (novoHorario.getDiaDoMes() == horario.getDiaDoMes() && novoHorario.getMes() == horario.getMes()){
+			if (novoHorario.getDiaDoMes() == horario.getDiaDoMes()
+					&& novoHorario.getMes() == horario.getMes()) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-        public List<String> getListaDeMedicos(){
-            List<String> medicos = new ArrayList<String>();
-            Iterator<Medico> it = this.listaDeMedico.iterator();
-
-            while (it.hasNext()){
-                Medico novoMedico = it.next();
-                medicos.add(novoMedico.getNomeDoMedico());
-            }
-            return medicos;
-        }
-
-       
 }
