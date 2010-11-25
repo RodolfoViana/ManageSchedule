@@ -32,10 +32,7 @@ public class Paciente{
 	private String formaDeContato;
 	private String dataDaUltimaVisita;
 	private HorarioDeAtendimento horarioDeAtendimento;
-
-        
-
-
+	
 	/**
 	 * Cadastra um paciente recebendo como parametros o nome, o cpf, o endereco,
 	 * o telefone residencial, comercial e o celular, a data de nascimento, o
@@ -61,7 +58,7 @@ public class Paciente{
 		} else if (testaCpf(cpf) == false) {
 			throw new Exception("CPF invalido.");
 		} else if (testaDataDeNascimento(dataDeNascimento) == false) {
-			throw new Exception("Data invalida.");
+			throw new Exception("Data de nascimento invalida.");
 		} else if (testaEmailValido(email) == false) {
 			throw new Exception("Email invalido.");
 		} else if (testaFormaDeContato(formaDeContato) == false) {
@@ -110,8 +107,6 @@ public class Paciente{
 		}
 		this.dataDaUltimaVisita = dataDaUltimaVisita;
 	}
-
-   
 
 	public HorarioDeAtendimento getHorarioDeAtendimento() {
 		return horarioDeAtendimento;
@@ -210,15 +205,16 @@ public class Paciente{
 	private boolean testaEmailValido(String email) {
 		Pattern padrao = Pattern.compile(".+@.+\\.[a-z]+");
 		Matcher pesquisa = padrao.matcher(email);
-		if (pesquisa.matches()) {
+		if (email.contains(",") || email.contains(";") || email.contains("?")
+				|| email.contains("&") || email.contains("!")
+				|| email.contains(":") || email.contains("*")
+				|| email.contains("#")) {
+			return false;
+		} else if (pesquisa.matches()) {
 			return true;
-		} else if (email.contains(",") || email.contains(";")
-				|| email.contains("?") || email.contains("&")
-				|| email.contains("!") || email.contains(":")
-				|| email.contains("*") || email.contains("#")) {
+		} else {
 			return false;
 		}
-		return false;
 
 	}
 
